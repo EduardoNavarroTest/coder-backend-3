@@ -11,7 +11,9 @@ class MockingService {
             pets.push({
                 name: faker.animal.dog(),
                 specie: faker.animal.type(),
-                adopter: false
+                adopter: false,
+                brithDate: faker.date.birthdate(),
+                image: faker.image.urlPicsumPhotos()
             })
         }
 
@@ -28,7 +30,8 @@ class MockingService {
                 last_name: faker.person.lastName(),
                 email: faker.internet.email(),
                 password: await createHash("coder123"),
-                role: await MockingService.generateRandomRole()
+                role: await MockingService.generateRandomRole(),
+                pets: []
             })
         }
 
