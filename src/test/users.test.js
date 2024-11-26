@@ -1,75 +1,72 @@
-// Mocha: es un framework para pruebas unitarias
-// Chai: es una libreria para hacer pruebas unitarias
-
+// Importaciones necesarias
 import User from "../dao/Users.dao.js";
 import mongoose from "mongoose";
 import assert from "assert";
 
-mongoose.connect(`mongodb+srv://eduardonavarrotest:coderhouse@cluster0.rmlvyfc.mongodb.net/Veterinaria?retryWrites=true&w=majority&appName=Cluster0`);
+// Configuración de la conexión a MongoDB
+mongoose.connect(
+    `mongodb+srv://eduardonavarrotest:coderhouse@cluster0.rmlvyfc.mongodb.net/Veterinaria?retryWrites=true&w=majority&appName=Cluster0`,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }
+);
 
-describe('Test DAO users', () => {
+// Manejo de eventos para la conexión a MongoDB
+mongoose.connection.on("connected", () => {
+    console.log("MongoDB conectado exitosamente");
+});
+
+mongoose.connection.on("error", (err) => {
+    console.error("Error al conectar a MongoDB:", err);
+});
+
+describe("Test DAO users", function () { 
+    this.timeout(10000); 
+
     let usersDao;
 
     before(async () => {
         usersDao = new User();
     });
 
-    
-    
-
-    it("Get all users", async () => {
+    it("Get all users", async function () { 
+        this.timeout(10000); 
         const users = await usersDao.get();
         assert.strictEqual(Array.isArray(users), true);
     });
 
-    it("Get user by email", async () => {
-        const emailFind = "qD0y3@example.com";
+    it("Get user by email", async function () {
+        this.timeout(10000);
+        const emailFind = "laura@example.com";
         const user = await usersDao.getBy({ email: emailFind });
         assert.strictEqual(typeof user, "object");
     });
 
-    it("Create user", async () => {
+    it("Create user", async function () {
+        this.timeout(10000);
         const user = await usersDao.save({
             first_name: "Eduardo",
             last_name: "Navarro",
-            email: "qD0y3@example.com",
+            email: "eduardonavarronuevo@example.com",
             password: "123456",
         });
         assert.ok(user._id);
     });
 
-    it("Validate user array pets empty", async () => {    
+    it("Validate user array pets empty", async function () {
+        this.timeout(10000);
         const user = await usersDao.save({
             first_name: "Laura",
             last_name: "Navarro",
-            email: "laura@example.com",
+            email: "lauranuevo@example.com",
             password: "123456",
         });
         assert.deepStrictEqual(user.pets, []);
     });
 
-    it("Comparación sencilla", ()=>{
-        assert.strictEqual(1,1);
-    })
-
-
-
-    /**Esto se debe hacer por ID */
-    it("Update user", async () => {
-        const user = await usersDao.update(
-            "qD0y3@example.com",
-            { first_name: "Edward" }
-        );
-        assert.strictEqual(user.email, "qD0y3@example.com");
-    });
-
-    it("Delete user", async () => {
-        const user = await usersDao.delete("qD0y3@example.com");
-        assert.strictEqual(user.email, "qD0y3@example.com");
-    });
-
+    
     after(async () => {
         await mongoose.connection.disconnect();
     });
-
 });

@@ -24,8 +24,4 @@ app.use('/api/mocks',mocksRouter);
 app.listen(PORT,()=>console.log(`Listening on ${PORT}`))
 
 
-
-//Faltante
-//El after completo
-// Clase 6 hasta la parte de la preentrega
-// Clase 7
+/** Analizar qué es lo que hace falta */

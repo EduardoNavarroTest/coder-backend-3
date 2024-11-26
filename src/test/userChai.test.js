@@ -8,7 +8,7 @@ import chai, { expect } from "chai";
 
 mongoose.connect(`mongodb+srv://eduardonavarrotest:coderhouse@cluster0.rmlvyfc.mongodb.net/Veterinaria?retryWrites=true&w=majority&appName=Cluster0`);
 
-describe('Test DAO users', () => {
+describe('Test DAO users CHAI', () => {
     let usersDao;
 
     before(async () => {
