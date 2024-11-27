@@ -25,3 +25,11 @@ app.listen(PORT,()=>console.log(`Listening on ${PORT}`))
 
 
 /** Analizar qué es lo que hace falta */
+/**
+ * Primer punto rúbrica => Test de routes de adoption.router.js (VIDEO 10)
+ * Segundo punto rúbrica => Docker (VIDEO 5 y 6)
+ * 
+ * 
+ * 
+ * 
+ */
