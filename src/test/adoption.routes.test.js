@@ -1,9 +1,9 @@
 import chai from 'chai';
 import supertest from 'supertest';
-import app from '../app.js'; 
+
 
 const { expect } = chai;
-const request = supertest(app);
+const request = supertest("http://localhost:8080");
 
 describe('Adoptions Routes', () => {
   // Test: Obtener todas las adopciones
@@ -23,8 +23,8 @@ describe('Adoptions Routes', () => {
 
   // Test: Crear una adopción
   it('POST /api/adoptions/:uid/:pid debería crear una nueva adopción', async () => {
-    const uid = 'validUserId'; // Cambia por un ID válido
-    const pid = 'validPetId'; // Cambia por un ID válido
+    const uid = '671855fd8bc9a2438b137279'; 
+    const pid = '671855fd8bc9a2438b137276'; 
     const res = await request.post(`/api/adoptions/${uid}/${pid}`);
     expect(res.status).to.equal(201); // Cambia según el código de estado esperado
     expect(res.body).to.have.property('success').eql(true);
