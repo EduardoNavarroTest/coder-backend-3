@@ -1,6 +1,10 @@
-# API Mocking Routes (PREENTREGA FINALIZADA BACKEND 3 CODERHOUSE)
+# API Mocking Routes (PBACKEND 3 CODERHOUSE)
 
 Este proyecto incluye rutas para obtener datos mock (ficticios) de usuarios y mascotas.
+También incluye Docker y test
+
+## Docker
+**URL** https://hub.docker.com/repository/docker/eduardonavarrotest/coder-docker-eduardo
 
 ## Rutas
 
